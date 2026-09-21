@@ -3,7 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 # Gemini Model
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
-    google_api_key="AIzaSyBUbnfpHJeYSe4_z7rRCZjjnP-q3a1bzII"
+    google_api_key=os.getenv("GOOGLE_API_KEY")
 )
 
 # ---------------- EXPLAINER AGENT ----------------
