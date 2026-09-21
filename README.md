@@ -1,3 +1,4 @@
+
 # Multi-Agent AI Study Assistant
 
 An intelligent RAG-based learning workspace that uses specialized AI agents for document-grounded explanations, summaries, and quiz generation.
@@ -21,39 +22,17 @@ The system combines Retrieval-Augmented Generation (RAG), vector embeddings, a v
 
 ## System Architecture
 
+The application follows a document-grounded multi-agent workflow:
 
-Academic PDF
-     |
-     v
-PDF Processing
-     |
-     v
-Text Splitting and Chunking
-     |
-     v
-Hugging Face Embeddings
-     |
-     v
-ChromaDB
-     |
-     v
-Relevant Content Retrieval
-     |
-     v
-Router Agent
-   /    |    \
-  /     |     \
- v      v      v
-Explainer Summary Quiz
- Agent    Agent  Agent
-   \       |      /
-    \      |     /
-     v     v    v
-      Evaluator Agent
-             |
-             v
-       Final Response
-
+1. The user uploads an academic PDF.
+2. The PDF is processed and divided into smaller text chunks.
+3. Text chunks are converted into vector embeddings.
+4. The embeddings are stored in ChromaDB.
+5. Relevant content is retrieved based on the user's request.
+6. The Router Agent identifies the required learning task.
+7. The request is passed to the appropriate specialized agent.
+8. The generated response is passed through the Evaluator Agent.
+9. The final response is displayed through the Streamlit interface.
 
 ## How It Works
 
@@ -85,26 +64,38 @@ The Router Agent identifies the selected learning task and routes the request to
 
 The system currently includes three task-specific agents:
 
-- **Explainer Agent** - explains concepts clearly, breaks down key ideas, and provides examples.
-- **Summary Agent** - generates chapter summaries, key points, and important definitions.
-- **Quiz Agent** - generates MCQs, short-answer questions, and answers.
+- Explainer Agent - explains concepts clearly, breaks down key ideas, and provides examples.
+- Summary Agent - generates chapter summaries, key points, and important definitions.
+- Quiz Agent - generates MCQs, short-answer questions, and answers.
 
 ### 8. Response Evaluation
 
 The generated response is passed to the Evaluator Agent, which improves its formatting, clarity, and readability before displaying the final response.
 
-
 ## AI Agents
 
-| Agent | Responsibility |
+### Router Agent
 
-| Router Agent | Routes the selected learning task to the appropriate agent |
-| Explainer Agent | Explains concepts clearly, breaks down key ideas, and provides examples |
-| Summary Agent | Generates chapter summaries, key points, and important definitions |
-| Quiz Agent | Generates MCQs, short-answer questions, and answers |
-| Evaluator Agent | Improves the clarity, formatting, and readability of the generated response |
+Routes the selected learning task to the appropriate specialized agent.
 
-## Technologies Usedx
+### Explainer Agent
+
+Uses retrieved document context to explain topics, break down key concepts, provide simple examples, and highlight important notes.
+
+### Summary Agent
+
+Generates chapter summaries, key points, and important definitions from the retrieved document content.
+
+### Quiz Agent
+
+Generates three multiple-choice questions, two short-answer questions, and their answers from the retrieved content.
+
+### Evaluator Agent
+
+Improves the formatting, clarity, and readability of the generated response.
+
+## Technologies Used
+
 - Python
 - Streamlit
 - LangChain
@@ -116,7 +107,9 @@ The generated response is passed to the Evaluator Agent, which improves its form
 - Retrieval-Augmented Generation (RAG)
 
 ## Project Structure
-MultiAgent_StudyAssistant
+
+```text
+MultiAgent_StudyAssistant/
 |
 ├── agents.py       # AI agents for explanation, summary, quiz, and evaluation
 ├── app.py          # Streamlit application and user interface
@@ -127,31 +120,62 @@ MultiAgent_StudyAssistant
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+````
 
 ## Getting Started
 
-1. Clone the Repository
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/aksheta-r/MultiAgent_StudyAssistant.git
 cd MultiAgent_StudyAssistant
-2. Create a Virtual Environment
-python -m venv venv
-For Windows:
-venv\Scripts\activate
-3. Install Dependencies
-pip install -r requirements.txt
-4. Configure the Gemini API Key
-Set your Google Gemini API key as an environment variable.
-For Windows PowerShell:
-$env:GOOGLE_API_KEY="your_api_key_here"
-Do not place API keys directly inside the source code.
-5. Run the Application
-streamlit run app.py
+```
 
-Example Workflow
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+For Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure the Gemini API Key
+
+Set your Google Gemini API key as an environment variable.
+
+For Windows PowerShell:
+
+```powershell
+$env:GOOGLE_API_KEY="your_api_key_here"
+```
+
+Do not place API keys directly inside the source code.
+
+### 5. Run the Application
+
+```bash
+streamlit run app.py
+```
+
+## Example Workflow
+
+A typical learning workflow is:
+
+```text
 Upload Academic PDF
         |
         v
-Select a Learning Task
+Select Learning Task
         |
         v
 Retrieve Relevant Content
@@ -170,19 +194,31 @@ Router Agent
                     |
                     v
              Final Response
+```
 
 The same workflow can be used for explanation, summary generation, and quiz generation.
 
-
 ## Security
+
 API credentials are stored using environment variables rather than hard-coded in source files.
+
 The generated ChromaDB vector database is created during document processing and is not included in the repository.
 
 ## Future Enhancements
-Conversation memory for multi-turn learning
-Support for multiple uploaded documents
-Improved agent coordination
-Personalized study plans
-Progress tracking
-Additional quiz formats
-Cloud deployment
+
+* Conversation memory for multi-turn learning
+* Support for multiple uploaded documents
+* Improved agent coordination
+* Personalized study plans
+* Progress tracking
+* Additional quiz formats
+* Cloud deployment
+
+## Project
+
+Multi-Agent AI Study Assistant
+
+Built using Python, LangChain, RAG, Gemini, ChromaDB, Hugging Face Embeddings, and Streamlit.
+
+````
+
