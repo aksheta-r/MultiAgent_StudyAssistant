@@ -1,0 +1,63 @@
+/* Background */
+.stApp {
+    background-color: #f6f7f4;
+    color: #1f1f1f;
+}
+
+/* Title */
+h1 {
+    color: #1f3b2c !important;
+    text-align: center;
+    font-size: 48px !important;
+    font-weight: 700 !important;
+}
+
+/* Headings */
+h2, h3 {
+    color: #2c2c2c !important;
+}
+
+/* Paragraphs */
+p, label, div {
+    color: #222222;
+}
+
+/* Upload Box */
+[data-testid="stFileUploader"] {
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #dcdcdc;
+}
+
+/* Radio Section */
+.stRadio > div {
+    background-color: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Input */
+.stTextInput input {
+    border-radius: 12px !important;
+    padding: 12px !important;
+    border: 1px solid #cccccc !important;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #dce9e1;
+    color: #1f1f1f;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Alerts */
+.stAlert {
+    border-radius: 12px;
+}
